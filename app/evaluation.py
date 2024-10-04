@@ -1,5 +1,8 @@
 from typing import Any, TypedDict
+from dotenv import load_dotenv
+import os
 
+load_dotenv()
 
 class Params(TypedDict):
     pass
@@ -33,4 +36,11 @@ def evaluation_function(response: Any, answer: Any, params: Params) -> Result:
     to output the evaluation response.
     """
 
+    key = os.environ.get("OPENAI_API_KEY")
+
+    print("Key:::", key)
+
     return Result(is_correct=True)
+
+if __name__ == "__main__":
+    evaluation_function(None, None, None)
