@@ -1,6 +1,7 @@
 from typing import Any, TypedDict
 from dotenv import load_dotenv
 import os
+import json
 import openai
 
 load_dotenv()
@@ -78,6 +79,3 @@ def evaluation_function(response, answer, parameters):
 
     return output
 
-
-if __name__ == "__main__":
-    evaluation_function(None, None, None)
