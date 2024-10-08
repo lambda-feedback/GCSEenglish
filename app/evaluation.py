@@ -38,6 +38,7 @@ def evaluation_function(response: Any, answer: Any, params: Params) -> Result:
 
     key = os.environ.get("OPENAI_API_KEY")
 
+
     print("Key:::", key)
 
     return Result(is_correct=True)
