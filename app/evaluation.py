@@ -45,8 +45,9 @@ def evaluation_function(response, answer, parameters):
     return types and that evaluation_function() is the main function used 
     to output the evaluation response.
     """
-
+    
     openai.api_key = os.environ.get("OPENAI_API_KEY")
+    
 
     # Making sure that each prompt ends with a full stop (prevents gpt getting confused when concatenated)
     main_prompt = enforce_full_stop(parameters['main_prompt'])
@@ -78,4 +79,4 @@ def evaluation_function(response, answer, parameters):
         output["feedback"] = feedback
 
     return output
-
+print("test")
