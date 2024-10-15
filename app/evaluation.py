@@ -79,4 +79,9 @@ def evaluation_function(response, answer, parameters):
         output["feedback"] = feedback
 
     return output
+<<<<<<< HEAD
 print("test")
+=======
+    print("test")
+
+>>>>>>> a52bf76363fb232fc900e2d33910ac47e9562f86
