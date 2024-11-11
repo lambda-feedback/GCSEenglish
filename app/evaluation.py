@@ -4,6 +4,7 @@ import os
 import json
 import openai
 
+
 load_dotenv()
 class Params(TypedDict):
     pass
@@ -45,12 +46,13 @@ def evaluation_function(response, answer, parameters):
     return types and that evaluation_function() is the main function used 
     to output the evaluation response.
     """
-
+    
     openai.api_key = os.environ.get("OPENAI_API_KEY")
+    
 
     # Making sure that each prompt ends with a full stop (prevents gpt getting confused when concatenated)
     main_prompt = enforce_full_stop("Students have been asked to write a descriptive piece with the title 'A Room with a View' as suggested by an image provided to them")
-    default_prompt = enforce_full_stop("Pretend like you’re an experienced GCSE English teacher. Your year 10 student has written a response to a GCSE descriptive task of an image. Remember that it is a descriptive task. If the student has written a narrative piece, gently remind them that they need to focus on setting the scene, not creating a story. Focus on the following two broad areas – content and technical accuracy. For technical accuracy, comment on four of the following: sentence demarcation, punctuation, sentence forms, grammar, spelling and vocabulary. Please pick these four sections appropriately; giving praise (specific things the student has done well) on two of them and targets (specific things the student can improve) on the other two. Use headings to show clear demarcation of ideas. Make sure to provide critical feedback, specifically picking out literary devices that may have been misused. Make sure you only give 2 pieces of praise and only 2 pieces of targets. For content and organisation skills, comment on four of the following: Communication, Tone, style, register, Vocabulary and devices, Structural features, Ideas, Cohesion (paragraphs, linking devices). Please pick these four sections appropriately; giving praise (specific things the student has done well) on two of them and targets (specific things the student can improve) on the other two. Use headings to show clear demarcation of ideas. Make sure you only give 2 pieces of praise and only 2 pieces of targets. When giving students feedback on their content, make sure to use open-ended questions (instead of “use shorter lines in this paragraph”, say “have you considered rephrasing this paragraph to” and then give them an example of how it should look). If you think a student has written a narrative piece instead of a descriptive piece, mention it and gently prompt them into thinking about the different smells, sounds or feels that they would experience in that setting. End the response with either “Great job, keep writing!” or “Keep up the good work!” ")
+    default_prompt = enforce_full_stop("Pretend like you are an experienced GCSE English teacher. Your year 10 student has written a response to a GCSE descriptive task of an image. Remember that it is a descriptive task. If the student has written a narrative piece, gently remind them that they need to focus on setting the scene, not creating a story. Focus on the following two broad areas; content and technical accuracy. For technical accuracy, comment on four of the following: sentence demarcation, punctuation, sentence forms, grammar, spelling and vocabulary. Please pick these four sections appropriately; giving praise (specific things the student has done well) on two of them and targets (specific things the student can improve) on the other two. Use headings to show clear demarcation of ideas. Make sure to provide critical feedback, specifically picking out literary devices that may have been misused. Make sure you only give 2 pieces of praise and only 2 pieces of targets. For content and organisation skills, comment on four of the following: Communication, Tone, style, register, Vocabulary and devices, Structural features, Ideas, Cohesion (paragraphs, linking devices). Please pick these four sections appropriately; giving praise (specific things the student has done well) on two of them and targets (specific things the student can improve) on the other two. Use headings to show clear demarcation of ideas. Make sure you only give 2 pieces of praise and only 2 pieces of targets. When giving students feedback on their content, make sure to use open-ended questions (instead of “use shorter lines in this paragraph”, say “have you considered rephrasing this paragraph to” and then give them an example of how it should look). If you think a student has written a narrative piece instead of a descriptive piece, mention it and gently prompt them into thinking about the different smells, sounds or feels that they would experience in that setting. End the response with either “Great job, keep writing!” or “Keep up the good work!” ")
     feedback_prompt = enforce_full_stop(parameters['feedback_prompt'])
     #print(main_prompt)
     #print(feedback_prompt)
@@ -79,5 +81,8 @@ def evaluation_function(response, answer, parameters):
 
     print("testing")
     return output
+<<<<<<< HEAD
     
+=======
+>>>>>>> a279df7eb55b4d4933bdbd71663af1dc15a46f45
 
