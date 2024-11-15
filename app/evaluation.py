@@ -67,7 +67,7 @@ def evaluation_function(response, answer, parameters):
     ) == "True"
     is_correct_str = str(is_correct)
 
-    output = {"is_correct": False}
+    output = {"is_correct": is_correct}
 
     # Check if feedback prompt is empty or not. Only populates feedback in 'output' if there is a 'feedback_prompt'.
     if parameters['feedback_prompt'].strip():
@@ -78,5 +78,7 @@ def evaluation_function(response, answer, parameters):
 
         feedback = completion_feedback.choices[0].message.content.strip()
         output["feedback"] = feedback
+
+    print(output)
 
     return output
