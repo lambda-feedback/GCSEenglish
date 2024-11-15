@@ -75,6 +75,13 @@ class TestEvaluationFunction(unittest.TestCase):
                       'default_prompt': ""}
         output = evaluation_function(response, answer, parameters)
         self.assertEqual(output["is_correct"], False) # TODO: find a response that passes and set the assert to True
+
+    def test_internal_no_default_prompt(self):
+        response = "test"
+        parameters = {'model': model,
+                      'question_prompt': ""}
+        output = evaluation_function(response, answer, parameters)
+        self.assertEqual(output["is_correct"], False)
     """
     TestCase Class used to test the algorithm.
     ---
