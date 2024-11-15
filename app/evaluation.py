@@ -79,10 +79,4 @@ def evaluation_function(response, answer, parameters):
         feedback = completion_feedback.choices[0].message.content.strip()
         output["feedback"] = feedback
 
-    print("testing")
     return output
-<<<<<<< HEAD
-    
-=======
->>>>>>> a279df7eb55b4d4933bdbd71663af1dc15a46f45
-
