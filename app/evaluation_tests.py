@@ -68,6 +68,19 @@ class TestEvaluationFunction(unittest.TestCase):
                       'default_prompt': default_prompt}
         output = evaluation_function(response, answer, parameters)
         self.assertEqual(output["is_correct"], True)
+
+    def test_internal_prompt(self):
+        response = """The room feels like a sanctuary, its spacious interior bathed in the golden light of a tranquil morning. The walls, painted in a soft shade of blue reminiscent of the sky at dawn, create an atmosphere of calm, while a subtle scent of fresh lavender lingers in the air, blending harmoniously with the occasional breeze wafting in through the open window. A plush, cream-colored rug muffles footsteps, its thick fibers soft underfoot, while the rich texture of a velvet armchair beckons you to sink in and unwind. The sturdy oak bookshelf nearby is a quiet testament to the room’s inhabitant, its shelves brimming with well-loved novels and tiny trinkets that hint at distant travels.
+
+        Through the wide window, the garden unfolds like a living painting. Vibrant flowers in full bloom dot the emerald expanse, their fragrance mingling with the earthy scent of the small pond at the center, which glistens under the sun’s rays. The cheerful chirping of birds blends with the gentle rustling of leaves, creating a symphony that feels both timeless and alive. During sunny mornings, the light floods the room with warmth, while on rainy afternoons, droplets dance on the glass, casting shifting patterns of shadow and light across the room.
+
+        Together, the indoor space and the view form an intimate dialogue, each enhancing the other’s beauty. Sitting here, you’re enveloped by a profound sense of peace, as though time itself has paused. It’s a place where you could lose yourself in a book, daydream endlessly, or simply sit in quiet reflection, letting the serenity seep into your soul."""
+        parameters = {'model': model,
+                      'main_prompt': "",
+                      'feedback_prompt': feedback_prompt,
+                      'default_prompt': ""}
+        output = evaluation_function(response, answer, parameters)
+        self.assertEqual(output["is_correct"], False) # TODO: find a response that passes and set the assert to True
     """
     TestCase Class used to test the algorithm.
     ---
