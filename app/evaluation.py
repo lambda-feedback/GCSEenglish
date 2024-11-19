@@ -77,7 +77,7 @@ def evaluation_function(response, answer, parameters):
     # Check if feedback prompt is empty or not. Only populates feedback in 'output' if there is a 'feedback_prompt'.
     completion_feedback = openai.ChatCompletion.create(
         model=parameters['model'],
-        messages=[{"role": "system", "content": "Students have been asked to do the following task: " +question_prompt + " \n\nGive objective feedback. You must take the student's answer to be: " + is_correct_str},
+        messages=[{"role": "system", "content": "Students have been asked to do the following task: " +question_prompt + " " + default_prompt+  " \n\nGive objective feedback. You must take the student's answer to be: " + is_correct_str},
                     {"role": "user", "content": response}])
 
     feedback = completion_feedback.choices[0].message.content.strip()
