@@ -26,21 +26,27 @@ def evaluation_function(response, answer, parameters):
     Function used to evaluate a student response.
     ---
     The handler function passes three arguments to evaluation_function():
+
     - 'response' which contains the student's answer
     - 'parameters' is a dictionary which contains the parameters:
         - 'model'
         - 'question_prompt' 
         - 'default_prompt'
+
     The output of this function is what is returned as the API response 
     and therefore must be JSON-encodable. It must also conform to the 
     response schema.
+
     Any standard python library may be used, as well as any package 
     available on pip (provided it is added to requirements.txt).
+
     The way you wish to structure you code (all in this function, or 
     split into many) is entirely up to you. All that matters are the 
     return types and that evaluation_function() is the main function used 
     to output the evaluation response.
     """
+
+
 
     openai.api_key = os.environ.get("OPENAI_API_KEY")
 
@@ -80,3 +86,5 @@ def evaluation_function(response, answer, parameters):
     output["feedback"] = feedback
 
     # print(output)
+
+    return output
