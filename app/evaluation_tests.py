@@ -1,3 +1,4 @@
+import time
 import unittest
 
 from dotenv import load_dotenv
@@ -14,6 +15,10 @@ default_prompt = "Output a Boolean: True if the student is correct and False if 
 answer = 1
 
 class TestEvaluationFunction(unittest.TestCase):
+
+    def setUp(self):
+        time.sleep(2)
+
     def test_general_risk(self):
         response = "The pressurised vessel, because it could explode and cause injury if it's overpressurised."
         parameters = {'model': model,
