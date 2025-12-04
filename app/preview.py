@@ -8,6 +8,12 @@ class Params(TypedDict):
 class Result(TypedDict):
     preview: Any
 
+class Preview(TypedDict):
+    latex: str
+    sympy: str
+    feedback: str
+
+
 
 def preview_function(response: Any, params: Params) -> Result:
     """
@@ -29,4 +35,4 @@ def preview_function(response: Any, params: Params) -> Result:
     The way you wish to structure you code (all in this function, or
     split into many) is entirely up to you.
     """
-    return Result(preview=response)
+    return Result(preview=Preview(latex=response, sympy=response))

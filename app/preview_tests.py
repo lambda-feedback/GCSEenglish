@@ -31,6 +31,8 @@ class TestPreviewFunction(unittest.TestCase):
 
         self.assertIn("preview", result)
         self.assertIsNotNone(result["preview"])
+        self.assertEqual(result["preview"]["latex"], "test")
+        self.assertEqual(result["preview"]["sympy"], "test")
 
 
 if __name__ == "__main__":
