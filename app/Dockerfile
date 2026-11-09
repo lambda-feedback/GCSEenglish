@@ -1,9 +1,12 @@
-# Base image that bundles AWS Lambda Python 3.8 image with some middleware functions
-# FROM base-eval-tmp
-# FROM rabidsheep55/python-base-eval-layer
-FROM ghcr.io/lambda-feedback/baseevalutionfunctionlayer:main-3.8
+# Base image that bundles the AWS Lambda Python image with the lambda-feedback middleware (app.handler)
+FROM ghcr.io/lambda-feedback/baseevalutionfunctionlayer:main-3.12
+
+# The 3.12 image is Amazon Linux 2023, which doesn't ship `find` (used below)
+RUN dnf install -y findutils && dnf clean all
 
 WORKDIR /app
+
+ENV PYTHONPATH=/app
 
 # Copy and install any packages/modules needed for your evaluation script.
 COPY requirements.txt .
@@ -25,5 +28,6 @@ COPY docs/user.md ./app/docs/user.md
 RUN chmod 644 $(find . -type f)
 RUN chmod 755 $(find . -type d)
 
-# The entrypoint for AWS is to invoke the handler function within the app package
-CMD [ "/app/app.handler" ]
+# The entrypoint for AWS is to invoke the handler function within the app package.
+# Python 3.12's Lambda runtime imports this as a module name, so it can't be a path.
+CMD [ "app.handler" ]
